@@ -1,6 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { type Collection } from '@/lib/supabase'
+import { ArrowRight } from 'lucide-react'
 
 interface CollectionCardProps {
   collection: Collection
@@ -9,46 +10,53 @@ interface CollectionCardProps {
 
 export const CollectionCard = ({ collection, onViewProducts }: CollectionCardProps) => {
   return (
-    <Card className="bg-white border border-gray-200 overflow-hidden">
+    <Card className="bg-white border-0 shadow-lg overflow-hidden hover-lift group">
       <CardContent className="p-0">
-        <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+        <div className="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden relative">
           {collection.image ? (
-            <img 
-              src={collection.image} 
-              alt={collection.name}
-              className="w-full h-full object-cover"
-            />
+            <>
+              <img 
+                src={collection.image} 
+                alt={collection.name}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+            </>
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-gray-400 text-sm">
-              No image
+            <div className="w-full h-full flex items-center justify-center text-gray-400 text-6xl">
+              👟
             </div>
           )}
-        </div>
-        
-        <div className="p-4">
-          <div className="flex items-start justify-between mb-2">
-            <h3 className="text-black font-semibold text-lg line-clamp-1">
-              {collection.name}
-            </h3>
-            {collection.featured && (
-              <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded font-medium">
-                Featured
-              </span>
-            )}
-          </div>
           
-          {collection.description && (
-            <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-              {collection.description}
-            </p>
+          {/* Featured badge */}
+          {collection.featured && (
+            <div className="absolute top-4 right-4">
+              <span className="bg-gradient-to-r from-sport-orange to-sport-orange-light text-white text-xs px-3 py-1.5 rounded-full font-bold shadow-lg">
+                DESTACADO
+              </span>
+            </div>
           )}
           
+          {/* Title overlay */}
+          <div className="absolute bottom-0 left-0 right-0 p-6">
+            <h3 className="text-white font-black text-2xl mb-2 drop-shadow-lg">
+              {collection.name}
+            </h3>
+            {collection.description && (
+              <p className="text-white/90 text-sm line-clamp-2 drop-shadow-md">
+                {collection.description}
+              </p>
+            )}
+          </div>
+        </div>
+        
+        <div className="p-5">
           <Button 
-            variant="outline" 
-            className="w-full text-black border-gray-300 hover:bg-gray-50"
             onClick={() => onViewProducts(collection.id)}
+            className="w-full bg-gradient-to-r from-sport-blue to-sport-pink hover:from-sport-blue-dark hover:to-sport-pink text-white font-bold rounded-full shadow-md hover:shadow-xl transition-all group"
           >
-            View Products
+            Ver Productos
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </CardContent>
