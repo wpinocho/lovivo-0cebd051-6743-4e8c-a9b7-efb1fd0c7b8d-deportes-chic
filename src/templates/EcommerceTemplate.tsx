@@ -60,6 +60,12 @@ export const EcommerceTemplate = ({
                 Inicio
               </Link>
               <Link 
+                to="/about" 
+                className="text-gray-700 hover:text-sport-blue transition-colors font-semibold"
+              >
+                Sobre Nosotros
+              </Link>
+              <Link 
                 to="/blog" 
                 className="text-gray-700 hover:text-sport-blue transition-colors font-semibold"
               >
@@ -133,6 +139,12 @@ export const EcommerceTemplate = ({
                 className="block text-gray-400 hover:text-white transition-colors"
               >
                 Inicio
+              </Link>
+              <Link 
+                to="/about" 
+                className="block text-gray-400 hover:text-white transition-colors"
+              >
+                Sobre Nosotros
               </Link>
               <Link 
                 to="/blog" 

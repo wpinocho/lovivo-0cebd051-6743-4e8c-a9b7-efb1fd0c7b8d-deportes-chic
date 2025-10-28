@@ -16,6 +16,7 @@ import Index from "./pages/Index";
 import Product from "./pages/Product";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Checkout from "./pages/Checkout";
 import ThankYou from "./pages/ThankYou";
@@ -58,7 +59,7 @@ const App = () => (
                       <Route path="/my-orders" element={<MyOrders />} />
                       <Route path="/blog" element={<Blog />} />
                       <Route path="/blog/:slug" element={<BlogPost />} />
-                      {/* Aquí puedes agregar/modificar rutas */}
+                      <Route path="/about" element={<About />} />
                       <Route path="*" element={<NotFound />} />
                     </Routes>
                   </CartUIProvider>
